@@ -27,6 +27,9 @@ or
 
 ## Usage
 
+Try to use with words rather than sentences for accurate translations and to avoid bad printing.
+
+
 ```sh
 fez -t "your beautiful sentence goes here"
 ```
