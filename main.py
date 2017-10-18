@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
 import sys
+import argparse
 
 from googletrans import Translator
 from colored import stylize
@@ -9,23 +10,28 @@ import tableprint as tp
 
 from constants import LANGUAGES
 
-if len(sys.argv) < 2:
-	print("Please specify atleast one word")
-	sys.exit()
-else:
-	args = sys.argv[1:]
-	sentence = ' '.join(args)
+parser = argparse.ArgumentParser(description="Welcome to Fez")
+
+parser.add_argument("-t", action="store", required=True, help="Your Beautiful Sentence")
+parser.add_argument("-x", help="1 for English to all and 0 for all to English", default=1)
+
+args = parser.parse_args()
+
+sentence = args.t
+en_to_all = bool(int(args.x))
 
 headers = [stylize("Text", colored.fg("blue")),
 			stylize("Pronounciation", colored.fg("blue")),
 			stylize("Language", colored.fg("blue"))]
 
-cell_width = int(4 * len(sentence))
+cell_width = max(20, int(4 * len(sentence)))
 print(tp.header(headers, width=cell_width))
-output = []
 translator = Translator()
 for code, lang in LANGUAGES.items():
-	translation = translator.translate(sentence, dest=code)
+	if en_to_all:
+		translation = translator.translate(sentence, dest=code)
+	else:
+		translation = translator.translate(sentence, src=code, dest='en')
 	output_text = translation.text
 	output_pron = translation.pronunciation
 	if not output_pron:
