@@ -26,7 +26,7 @@ def translate():
                 stylize("Pronounciation", colored.fg("blue")),
                 stylize("Language", colored.fg("blue"))]
 
-    cell_width = max(20, int(4 * len(sentence)))
+    cell_width = max(20, int(2.5 * len(sentence)))
     print(tp.header(headers, width=cell_width))
     translator = Translator()
     for code, lang in LANGUAGES.items():
