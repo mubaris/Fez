@@ -10,6 +10,12 @@ Python script to print all translations of a sentence
 
 ## Installation
 
+### Using pip
+
+`(sudo) pip install fez`
+
+### From Source
+
 ```
 git clone https://github.com/mubaris/Fez
 
