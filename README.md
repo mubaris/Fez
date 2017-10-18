@@ -12,13 +12,13 @@ Python script to print all translations of a sentence
 
 ```sh
 cd Fez
-./main.py -t "your beautiful sentence goes here"
+./Fez.py -t "your beautiful sentence goes here"
 ```
 For English to all other languages
 
 ```sh
 cd Fez
-./main.py -t "your beautiful sentence goes here" -x 0
+./Fez.py -t "your beautiful sentence goes here" -x 0
 ```
 For All languages to English
 
